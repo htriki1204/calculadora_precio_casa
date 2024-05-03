@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Precio Estimado de Casa</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> 
 </head>
 <body>
     <h1>Tu casa en maadrid</h1>
     <div class="house-images-container">
-        <img src="Imagenes/pexels-quique-olivar-1921601-4833770.jpg" alt="Imagen 1" class="house-image">
+        <img src="../static/pexels-quique-olivar-1921601-4833770.jpg" alt="Imagen 1" class="house-image">
     </div>
     <form id="houseForm">
         <div class="input-group">
@@ -136,7 +136,7 @@
         }
 
         // Llama a la función para leer el archivo CSV y generar opciones al cargar la página
-        leerCSV("Datos/DistritosProduccion.csv", function(data) {
+        leerCSV("../static/DistritosProduccion.csv", function(data) {
             var distritos = data.split("\n");
             generarOpciones(distritos);
         });
