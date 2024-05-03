@@ -11,9 +11,10 @@ model = joblib.load("modelo_entrenado.pkl")
 def index():
     return render_template("index.html")
 
-@app.route("/predict", methods=["POST"])
+@app.route("/predict", methods=["GET","POST"])
 def predict():
     data = request.form.to_dict()
+    print("Data received:", data) 
     bedrooms = float(data.get("bedrooms", 0))
     bathrooms = float(data.get("bathrooms", 0))
     area = float(data.get("area", 0))
@@ -26,13 +27,15 @@ def predict():
     property_type = data.get("property_type", "")
     etiqueta = data.get("label", "")
     district = data.get("district", "")
-    print(bedrooms)
-
+    print("hola que t")
+    print(1)
     # Preprocesar los datos (si es necesario)
     # Hacer la predicción
-    prediction = model.predict([[bedrooms, bathrooms, area]])
+    #prediction = model.predict([[bedrooms, bathrooms, area]])
     
-    return jsonify({"prediction": prediction[0]})
+    #return jsonify({"prediction": prediction[0]})
+    return jsonify({"prediction": 115})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
