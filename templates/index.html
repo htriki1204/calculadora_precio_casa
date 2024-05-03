@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Precio Estimado de Casa</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> 
 </head>
 <body>
@@ -32,36 +33,39 @@
             <label for="year">Año de construcción:</label>
             <input type="number" id="year" name="year" required>
         </div>
-        
+
         <div class="input-group">
             <label for="metro">Metro:</label>
             <button type="button" id="metroButton" onclick="toggleButton('metroButton')">No</button>
-            <input type="hidden" id="metro" name="metro" value="false">
+            <input type="hidden" id="metro" name="metro" value=false>
         </div>
         
         <div class="input-group">
             <label for="renfe">Renfe:</label>
             <button type="button" id="renfeButton" onclick="toggleButton('renfeButton')">No</button>
-            <input type="hidden" id="renfe" name="renfe" value="false">
+            <input type="hidden" id="renfe" name="renfe" value=0>
         </div>
         
         <div class="input-group">
             <label for="air_conditioning">Aire acondicionado:</label>
             <button type="button" id="airConditioningButton" onclick="toggleButton('airConditioningButton')">No</button>
-            <input type="hidden" id="air_conditioning" name="air_conditioning" value="false">
+            <input type="hidden" id="air_conditioning" name="air_conditioning" value=0>
         </div>
         
         <div class="input-group">
             <label for="elevator">Ascensor:</label>
             <button type="button" id="elevatorButton" onclick="toggleButton('elevatorButton')">No</button>
-            <input type="hidden" id="elevator" name="elevator" value="false">
+            <input type="hidden" id="elevator" name="elevator" value=0>
         </div>
         
         <div class="input-group">
             <label for="garden">Jardín:</label>
             <button type="button" id="gardenButton" onclick="toggleButton('gardenButton')">No</button>
-            <input type="hidden" id="garden" name="garden" value="false">
+            <input type="hidden" id="garden" name="garden" value=0>
         </div>
+        
+        
+       
         
         <div class="input-group">
             <label for="property_type">Tipo de inmueble:</label>
@@ -132,17 +136,18 @@
         }
 
         // Función para alternar el estado del botón entre "Sí" y "No" y cambiar el valor del campo oculto
-        function toggleButton(buttonId) {
-            var button = document.getElementById(buttonId);
-            var hiddenInput = document.getElementById(buttonId.split("Button")[0]);
-            if (button.textContent === "Sí") {
-                button.textContent = "No";
-                hiddenInput.value = "false";
-            } else {
-                button.textContent = "Sí";
-                hiddenInput.value = "true";
-            }
+        // Función para alternar el estado del botón entre "Sí" y "No" y cambiar el valor del campo oculto
+    function toggleButton(buttonId) {
+        var button = document.getElementById(buttonId);
+        var hiddenInput = document.getElementById(buttonId.split("Button")[0]);
+        if (button.textContent === "Sí") {
+            button.textContent = "No";
+            hiddenInput.value = 0; // Establecer el valor como false (booleano)
+        } else {
+            button.textContent = "Sí";
+            hiddenInput.value = 1; // Establecer el valor como true (booleano)
         }
+    }
 
         // Llama a la función para leer el archivo CSV y generar opciones al cargar la página
         leerCSV("../static/DistritosProduccion.csv", function(data) {
