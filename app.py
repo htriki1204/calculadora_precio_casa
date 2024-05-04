@@ -51,8 +51,8 @@ def predict():
     }
     print(1)
     CordenasPorDistritos = pd.read_csv("static/CordenadasPorDistrito.csv")
-    diccionario["Latitud"] = CordenasPorDistritos[CordenasPorDistritos["distrito/ciudad"]=="Alameda de Osuna"]["Latitud"].values
-    diccionario["Longitud"] = CordenasPorDistritos[CordenasPorDistritos["distrito/ciudad"]=="Alameda de Osuna"]["Longitud"].values
+    diccionario["Latitud"] = CordenasPorDistritos[CordenasPorDistritos["distrito/ciudad"]==district]["Latitud"].values
+    diccionario["Longitud"] = CordenasPorDistritos[CordenasPorDistritos["distrito/ciudad"]==district]["Longitud"].values
     inputPrediccion = pd.DataFrame(diccionario)
     numeric_columns = ['Dormitorios', 'Superficie', 'Num_baños', 'Metro', 'Renfe', 'Año_de_construccion', 'Calefaccion',
                    'Aire acondicionado', 'Ascensor', 'Jardin']
@@ -96,5 +96,5 @@ def estandarizar(dato_encoded):
     
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=8000)
 
