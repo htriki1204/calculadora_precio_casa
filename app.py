@@ -32,7 +32,7 @@ def predict():
     property_type = data.get("property_type", "")
     house_type = data.get("housing_type", "")
     etiqueta = data.get("label", "")
-    district = data.get("district", "")
+    district = data.get("district", "").strip()
     diccionario = {
         "Dormitorios":bedrooms,
         "Superficie":area,
