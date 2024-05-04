@@ -6,11 +6,15 @@ body {
 }
 
 header {
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
+    background-image: url('../Images/madrid2.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Ajusta la imagen para cubrir todo el encabezado */
+    background-position: center; /* Centra la imagen de fondo */
+    height: 230px; /* Altura del encabezado */
+    text-align: center; /* Alinea el contenido al centro */
+    color: white; /* Color del texto en el encabezado */
+    padding-top: 70px; /* Espacio adicional en la parte superior del encabezado */
 }
+
 
 .container {
     max-width: 600px;
@@ -51,6 +55,7 @@ header {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .input-group label {
@@ -104,4 +109,27 @@ footer {
     background-color: #007bff;
     color: #fff;
     border-radius: 0 0 10px 10px;
+}
+
+/* Estilos para el popup */
+.popup {
+    position: fixed;
+    top: 20%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+/* Estilos para el botón de cerrar */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #333333;
+    font-size: 20px;
 }

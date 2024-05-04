@@ -161,5 +161,57 @@
             generarOpciones(distritos);
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    // Manejar la solicitud del formulario
+            $("#houseForm").submit(function(event) {
+                // Prevenir el envío del formulario por defecto
+                event.preventDefault();
+                
+                // Obtener los datos del formulario
+                var formData = $(this).serialize();
+                
+                // Realizar una solicitud AJAX al servidor
+                $.ajax({
+                    type: "POST",
+                    url: "/predict",
+                    data: formData,
+                    success: function(response) {
+                        // Verificar si hay un error en la respuesta
+                        if ("error" in response) {
+                            // Mostrar el popup de error personalizado
+                            showCustomPopup(response.error.join("\n"));
+                        } else {
+                            // Procesar la respuesta normalmente
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+        });
+
+        // Función para mostrar el popup personalizado
+        function showCustomPopup(message) {
+        // Crear el elemento de popup
+        var popup = $("<div class='popup'></div>");
+        
+        // Agregar el mensaje al popup
+        popup.text(message);
+        
+        // Agregar el botón de cerrar
+        var closeBtn = $("<span class='close-btn'>&times;</span>");
+        closeBtn.click(function() {
+            // Ocultar el popup al hacer clic en el botón de cerrar
+            popup.remove();
+        });
+        popup.append(closeBtn);
+        
+        // Agregar el popup al cuerpo del documento
+        $("body").append(popup);
+}
+    </script>
 </body>
 </html>

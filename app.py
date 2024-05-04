@@ -20,6 +20,8 @@ def index():
 def predict():
     data = request.form.to_dict()
     print("Data received:", data) 
+
+
     bedrooms = float(data.get("bedrooms", 0))
     bathrooms = float(data.get("bathrooms", 0))
     area = float(data.get("area", 0))
@@ -33,6 +35,27 @@ def predict():
     house_type = data.get("housing_type", "")
     etiqueta = data.get("label", "")
     district = data.get("district", "").strip()
+
+    # Realizar las validaciones
+    errors = []
+
+    if area > 300:
+        errors.append("La superficie no puede ser mayor a 300 m².")
+
+    if bedrooms > 10:
+        errors.append("El número de dormitorios no puede ser mayor a 10.")
+
+    if bathrooms > 7:
+        errors.append("El número de baños no puede ser mayor a 7.")
+
+    if year < 1800 or year > 2024:
+        errors.append("El año de construcción debe estar entre 1800 y 2024.")
+
+    # Si hay errores, retornar un mensaje de error
+    if errors:
+        return jsonify({"error": errors})
+
+
     diccionario = {
         "Dormitorios":bedrooms,
         "Superficie":area,
