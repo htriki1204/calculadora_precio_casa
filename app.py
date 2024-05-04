@@ -41,10 +41,10 @@ def predict():
     if area > 300:
         errors.append("La superficie no puede ser mayor a 300 m².")
 
-    if bedrooms > 10:
+    if bedrooms > 6:
         errors.append("El número de dormitorios no puede ser mayor a 10.")
 
-    if bathrooms > 7:
+    if bathrooms > 5:
         errors.append("El número de baños no puede ser mayor a 7.")
 
     if year < 1800 or year > 2024:
