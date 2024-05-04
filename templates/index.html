@@ -188,7 +188,7 @@
                             // Mostrar el popup de error personalizado
                             showCustomPopup(response.error.join("\n"));
                         } else {
-                            var roundedPrediction = Math.round(response.prediction);
+                            var roundedPrediction = Math.round(response.prediction/ 100) * 100;
                             // Mostrar la predicción redondeada en la página
                             $("#predictionResult").text("El precio predicho es: " + roundedPrediction + "€");
                         }
