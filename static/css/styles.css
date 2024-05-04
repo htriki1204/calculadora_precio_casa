@@ -1,59 +1,106 @@
-/* Estilos para el cuerpo de la página */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
 }
 
-/* Estilos para el contenedor principal */
+header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
 .container {
-    max-width: 800px;
+    max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para los encabezados */
-h1 {
-    color: #333;
+.button-group-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+}
+
+.button-group label {
+    margin-right: 10px;
+    width: 230px;
+    font-weight: bold;
+}
+
+.button-group button {
+    width: 100px;
+    margin-right: 10px;
+}
+
+
+.input-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.input-group label {
+    margin-top: 9px;
+    margin-bottom: 0;
+    font-weight: bold;
 }
 
 input[type="number"],
 select {
-    width: calc(15% - 10px);
-    margin-bottom: 10px;
+    width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-/* Estilos para los botones */
-button[type="submit"],
 button[type="button"] {
-    padding: 10px 20px;
+    width: 50%;
+    padding: 8px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-button[type="submit"]:hover,
 button[type="button"]:hover {
     background-color: #0056b3;
 }
 
-/* Estilos para las imágenes */
-.house-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-    margin: 0 auto; 
-    display: block; 
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-h1{
+
+button[type="submit"]:hover {
+    background-color: #004080;
+}
+
+footer {
     text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 0 0 10px 10px;
 }
