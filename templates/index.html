@@ -188,8 +188,9 @@
                             // Mostrar el popup de error personalizado
                             showCustomPopup(response.error.join("\n"));
                         } else {
-                             // Mostrar la predicción en la página
-                            $("#predictionResult").text("El precio predicho es: " + response.prediction);
+                            var roundedPrediction = Math.round(response.prediction);
+                            // Mostrar la predicción redondeada en la página
+                            $("#predictionResult").text("El precio predicho es: " + roundedPrediction + "€");
                         }
                     },
                     error: function(xhr, status, error) {
