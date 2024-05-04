@@ -35,7 +35,7 @@ function toggleButton(buttonId) {
 }
 
 // Llama a la función para leer el archivo CSV y generar opciones al cargar la página
-leerCSV("../static/DistritosProduccion.csv", function(data) {
+leerCSV("../static/distritos.csv", function(data) {
     var distritos = data.split("\n");
     generarOpciones(distritos);
 });

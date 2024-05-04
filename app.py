@@ -10,7 +10,7 @@ import joblib
 app = Flask(__name__)
 
 # Cargar el modelo entrenado
-model = joblib.load("modelo_entrenado.pkl")
+model = joblib.load("pkl/modelo_produccion.pkl")
 
 @app.route("/")
 def index():
@@ -79,7 +79,7 @@ def predict():
     # Convertir las columnas a enteros
     for column in numeric_columns:
         inputPrediccion[column] = pd.to_numeric(inputPrediccion[column], errors='coerce').astype(int)
-    encoder = joblib.load('encoder.pkl')
+    encoder = joblib.load('pkl/encoderProduccion.pkl')
     inputPrediccionEncoded = one_hot_encoding_row(inputPrediccion,encoder)
     inputPrediccionEncodedScalaed = estandarizar(inputPrediccionEncoded)
     # Preprocesar los datos (si es necesario)
@@ -106,7 +106,7 @@ def one_hot_encoding_row(dato_row, encoder):
     return dato_row_encoded
 
 def estandarizar(dato_encoded):
-    scaler = joblib.load('scaler.pkl')
+    scaler = joblib.load('pkl/scalerProduccion.pkl')
     variables_estandarizar = ["Dormitorios","Superficie","Num_baños","Año_de_construccion","Latitud","Longitud"]
     dato_encoded[variables_estandarizar] = scaler.transform(dato_encoded[variables_estandarizar])
     return dato_encoded
