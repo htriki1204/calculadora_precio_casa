@@ -20,14 +20,13 @@ def index():
 def predict():
     data = request.form.to_dict()
     print("Data received:", data) 
-
-
+    area = float(data.get("area", 0))
     bedrooms = float(data.get("bedrooms", 0))
     bathrooms = float(data.get("bathrooms", 0))
-    area = float(data.get("area", 0))
     year = float(data.get("year", 0))
     metro = data.get("metro", False)
     renfe = data.get("renfe", False)
+    heating = data.get("heating", False)
     air_conditioning = data.get("air_conditioning", False)
     elevator = data.get("elevator", False)
     garden = data.get("garden", False)
@@ -55,7 +54,6 @@ def predict():
     if errors:
         return jsonify({"error": errors})
 
-
     diccionario = {
         "Dormitorios":bedrooms,
         "Superficie":area,
@@ -64,7 +62,7 @@ def predict():
         "Renfe":renfe,
         "Tipo_de_inmueble":property_type,
         "Año_de_construccion":year,
-        "Calefaccion":air_conditioning,
+        "Calefaccion":heating,
         "Etiqueta":etiqueta,
         "Aire acondicionado":air_conditioning,
         "Ascensor":elevator,
@@ -72,10 +70,9 @@ def predict():
         "Tipo":house_type,
         "distrito/ciudad":district,
     }
-    print(1)
-    CordenasPorDistritos = pd.read_csv("static/CordenadasPorDistrito.csv")
-    diccionario["Latitud"] = CordenasPorDistritos[CordenasPorDistritos["distrito/ciudad"]==district]["Latitud"].values
-    diccionario["Longitud"] = CordenasPorDistritos[CordenasPorDistritos["distrito/ciudad"]==district]["Longitud"].values
+    CordenadasPorDistritos = pd.read_csv("static/CordenadasPorDistrito.csv")
+    diccionario["Latitud"] = CordenadasPorDistritos[CordenadasPorDistritos["distrito/ciudad"]==district]["Latitud"].values
+    diccionario["Longitud"] = CordenadasPorDistritos[CordenadasPorDistritos["distrito/ciudad"]==district]["Longitud"].values
     inputPrediccion = pd.DataFrame(diccionario)
     numeric_columns = ['Dormitorios', 'Superficie', 'Num_baños', 'Metro', 'Renfe', 'Año_de_construccion', 'Calefaccion',
                    'Aire acondicionado', 'Ascensor', 'Jardin']
@@ -88,9 +85,7 @@ def predict():
     # Preprocesar los datos (si es necesario)
     # Hacer la predicción
     prediction = model.predict(inputPrediccionEncodedScalaed)
-    
     return jsonify({"prediction": prediction[0]})
-    #return jsonify({"prediction": 115})
 
 
 ##Funciones auxiliares

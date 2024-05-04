@@ -49,9 +49,9 @@
             <!-- Segundo grupo de botones: Ascensor y Aire acondicionado -->
             <div class="button-group-row">
                 <div class="button-group">
-                    <label for="elevator">Ascensor:</label>
-                    <button type="button" id="elevatorButton" onclick="toggleButton('elevatorButton')">No</button>
-                    <input type="hidden" id="elevator" name="elevator" value=0>
+                    <label for="heating">Calefacción:</label>
+                    <button type="button" id="heatingButton" onclick="toggleButton('heatingButton')">No</button>
+                    <input type="hidden" id="heating" name="heating" value=0>
                 </div>
                 <div class="button-group">
                     <label for="air_conditioning">Aire acondicionado:</label>
@@ -62,12 +62,17 @@
 
             <div class="button-group-row">
                 <div class="button-group">
+                    <label for="elevator">Ascensor:</label>
+                    <button type="button" id="elevatorButton" onclick="toggleButton('elevatorButton')">No</button>
+                    <input type="hidden" id="elevator" name="elevator" value=0>
+                </div>
+                <div class="button-group">
                     <label for="garden">Jardín:</label>
                     <button type="button" id="gardenButton" onclick="toggleButton('gardenButton')">No</button>
                     <input type="hidden" id="garden" name="garden" value=0>
                 </div>
             </div>
-            
+
             
             <div class="input-group">
                 <label for="property_type">Tipo de inmueble:</label>
@@ -111,7 +116,7 @@
             
             <button type="submit">Calcular Precio</button>
         </form>
-        <p id="output"></p>
+        <p id="predictionResult"></p>
     </div>
 
     <footer>
@@ -183,7 +188,8 @@
                             // Mostrar el popup de error personalizado
                             showCustomPopup(response.error.join("\n"));
                         } else {
-                            // Procesar la respuesta normalmente
+                             // Mostrar la predicción en la página
+                            $("#predictionResult").text("El precio predicho es: " + response.prediction);
                         }
                     },
                     error: function(xhr, status, error) {
@@ -195,23 +201,24 @@
 
         // Función para mostrar el popup personalizado
         function showCustomPopup(message) {
-        // Crear el elemento de popup
-        var popup = $("<div class='popup'></div>");
-        
-        // Agregar el mensaje al popup
-        popup.text(message);
-        
-        // Agregar el botón de cerrar
-        var closeBtn = $("<span class='close-btn'>&times;</span>");
-        closeBtn.click(function() {
-            // Ocultar el popup al hacer clic en el botón de cerrar
-            popup.remove();
-        });
-        popup.append(closeBtn);
-        
-        // Agregar el popup al cuerpo del documento
-        $("body").append(popup);
-}
+            // Crear el elemento de popup
+            var popup = $("<div class='popup'></div>");
+            
+            // Agregar el mensaje al popup
+            popup.text(message);
+            
+            // Agregar el botón de cerrar
+            var closeBtn = $("<span class='close-btn'>&times;</span>");
+            closeBtn.click(function() {
+                // Ocultar el popup al hacer clic en el botón de cerrar
+                popup.remove();
+            });
+            popup.append(closeBtn);
+            
+            // Agregar el popup al cuerpo del documento
+            $("body").append(popup);
+        }
+
     </script>
 </body>
 </html>
