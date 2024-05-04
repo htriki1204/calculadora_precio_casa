@@ -140,9 +140,11 @@
         function generarOpciones(distritos) {
             var select = document.getElementById("district");
             distritos.forEach(function(distrito) {
+                // Convertir la primera letra a mayúscula y el resto a minúscula
+                var distritoCapitalizado = distrito.charAt(0).toUpperCase() + distrito.slice(1).toLowerCase();
                 var option = document.createElement("option");
                 option.value = distrito;
-                option.textContent = distrito;
+                option.textContent = distritoCapitalizado;
                 select.appendChild(option);
             });
         }
@@ -188,7 +190,7 @@
                             // Mostrar el popup de error personalizado
                             showCustomPopup(response.error.join("\n"));
                         } else {
-                            var roundedPrediction = Math.round(response.prediction/ 100) * 100;
+                            var roundedPrediction = Math.round(response.prediction/ 1000) * 1000;
                             // Mostrar la predicción redondeada en la página
                             $("#predictionResult").text("El precio predicho es: " + roundedPrediction + "€");
                         }
