@@ -230,10 +230,6 @@
     color: black; /* Cambia el color del texto a azul */
     }
     
-    input[type="number"] {
-        -webkit-appearance: none;
-    }
-    
     input[type="number"],
     select {
         width: 80%;
