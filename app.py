@@ -41,11 +41,20 @@ def predict():
     if area > 300:
         errors.append("La superficie no puede ser mayor a 300 m².")
 
-    if bedrooms > 6:
-        errors.append("El número de dormitorios no puede ser mayor a 6.")
+    if area < 0:
+        errors.append("La superficie no puede ser negativa.")
 
-    if bathrooms > 5:
-        errors.append("El número de baños no puede ser mayor a 5.")
+    if bedrooms > 5:
+        errors.append("El número de dormitorios no puede ser mayor a 5.")
+
+    if bedrooms < 0:
+        errors.append("El número de dormitorios no puede ser negativo.")
+
+    if bathrooms > 4:
+        errors.append("El número de baños no puede ser mayor a 4.")
+
+    if bathrooms < 0:
+        errors.append("El número de baños no puede ser negativo.")
 
     if year < 1800 or year > 2024:
         errors.append("El año de construcción debe estar entre 1800 y 2024.")
