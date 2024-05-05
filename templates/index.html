@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Intelligent Real State</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
@@ -23,7 +23,7 @@
             </div>
 
             <div class="input-group">
-                <label for="bathrooms">Num_baños:</label>
+                <label for="bathrooms">Num.baños:</label>
                 <input type="number" id="bathrooms" name="bathrooms" required>
             </div>
 
@@ -45,7 +45,7 @@
                     <input type="hidden" id="renfe" name="renfe" value=0>
                 </div>
             </div>
-            
+
             <!-- Segundo grupo de botones: Ascensor y Aire acondicionado -->
             <div class="button-group-row">
                 <div class="button-group">
@@ -54,9 +54,9 @@
                     <input type="hidden" id="heating" name="heating" value=0>
                 </div>
                 <div class="button-group">
-                    <label for="air_conditioning">Aire acondicionado:</label>
+                    <label for="airConditioning">Aire acondicionado:</label>
                     <button type="button" id="airConditioningButton" onclick="toggleButton('airConditioningButton')">No</button>
-                    <input type="hidden" id="air_conditioning" name="air_conditioning" value=0>
+                    <input type="hidden" id="airConditioning" name="airConditioning" value=0>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            
+
             <div class="input-group">
                 <label for="property_type">Tipo de inmueble:</label>
                 <select id="property_type" name="property_type">
@@ -83,7 +83,7 @@
                     <option value="Media">Media</option>
                 </select>
             </div>
-    
+
             <div class="input-group">
                 <label for="housing_type">Tipo de inmueble:</label>
                 <select id="housing_type" name="housing_type">
@@ -92,7 +92,7 @@
                     <option value="atico">Ático</option>
                 </select>
             </div>
-            
+
             <div class="input-group">
                 <label for="label">Etiqueta:</label>
                 <select id="label" name="label">
@@ -106,14 +106,14 @@
                     <option value="B">B</option>
                 </select>
             </div>
-            
+
             <div class="input-group">
                 <label for="district">Distrito:</label>
                 <select id="district" name="district">
                     <!-- Las opciones se generarán dinámicamente aquí -->
                 </select>
             </div>
-            
+
             <button type="submit">Calcular Precio</button>
         </form>
         <p id="predictionResult"></p>
@@ -156,9 +156,11 @@
             if (button.textContent === "Sí") {
                 button.textContent = "No";
                 hiddenInput.value = 0; // Establecer el valor como false (booleano)
+                button.classList.remove('active'); // Quitar la clase activa
             } else {
                 button.textContent = "Sí";
                 hiddenInput.value = 1; // Establecer el valor como true (booleano)
+                button.classList.add('active'); // Agregar la clase activa
             }
         }
 
@@ -175,10 +177,10 @@
             $("#houseForm").submit(function(event) {
                 // Prevenir el envío del formulario por defecto
                 event.preventDefault();
-                
+
                 // Obtener los datos del formulario
                 var formData = $(this).serialize();
-                
+
                 // Realizar una solicitud AJAX al servidor
                 $.ajax({
                     type: "POST",
@@ -206,10 +208,10 @@
         function showCustomPopup(message) {
             // Crear el elemento de popup
             var popup = $("<div class='popup'></div>");
-            
+
             // Agregar el mensaje al popup
             popup.text(message);
-            
+
             // Agregar el botón de cerrar
             var closeBtn = $("<span class='close-btn'>&times;</span>");
             closeBtn.click(function() {
@@ -217,7 +219,7 @@
                 popup.remove();
             });
             popup.append(closeBtn);
-            
+
             // Agregar el popup al cuerpo del documento
             $("body").append(popup);
         }

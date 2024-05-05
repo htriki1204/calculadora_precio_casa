@@ -1,117 +1,282 @@
-/* Estilos generales */
-body {
-    background-image: url('../Images/madrid2.jpg'); /* Ruta de la imagen de fondo */
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el cuerpo */
-    background-position: center top; /* Ajusta la posición de la imagen */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+/* Estilos para pantallas grandes */
+@media only screen and (min-width: 768px) {
+
+    body {
+        background-image: url('../Images/madrid2.jpg');
+        /* Ruta de la imagen de fondo */
+        background-size: cover;
+        /* Ajusta el tamaño de la imagen para cubrir todo el cuerpo */
+        background-position: center top;
+        /* Ajusta la posición de la imagen */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        text-align: center;
+        color: white;
+        padding-top: 70px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        margin-top: 50px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .button-group-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .button-group {
+        display: flex;
+        align-items: center;
+    }
+
+    .button-group label {
+        margin-right: 10px;
+        width: 170px;
+        font-weight: bold;
+    }
+
+    .button-group button {
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    
+    .button-group button[type="button"] {
+        background-color: rgba(48, 47, 47, 0.15);
+        color: black;
+        font-weight: bold;
+        border: 1px solid #fff;
+        width: 80px;
+    }
+
+    .button-group button[type="button"]:hover {
+        background-color: #0056b3;
+        /* Cambio de color al pasar el ratón */
+        color: #fff;
+        /* Color de letra azul */
+    }
+
+    /* Agregar estilos para la clase activa */
+    .button-group button[type="button"].active {
+        background-color: #007bff;
+        /* Fondo azul anterior */
+        color: #fff;
+        /* Color de letra blanco */
+        border: 1px solid #fff;
+        /* Quitar el borde cuando está en "Sí" */
+    }
+
+    .input-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .input-group label {
+        margin-top: 9px;
+        margin-bottom: 0;
+        font-weight: bold;
+    }
+
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button[type="button"] {
+        width: 50%;
+        padding: 8px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button[type="button"]:hover {
+        background-color: #0056b3;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #0056b3;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #004080;
+    }
+
+    button[type="submit"] {
+        width: 50%;
+        padding: 10px 20px;
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 16px;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    /* Estilos para el popup */
+    .popup {
+        position: fixed;
+        top: 85%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+    }
+
+    /* Estilos para el botón de cerrar */
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        color: #333333;
+        font-size: 20px;
+    }
+
+
 }
 
-header {
-    text-align: center;
-    color: white;
-    padding-top: 70px;
-}
+/* Estilos para pantallas pequeñas (móviles) */
+@media only screen and (max-width: 767px) {
+    /* Estilos generales para pantallas pequeñas */
 
-.container {
-    max-width: 600px;
-    margin: 20px auto;
-    margin-top: 50px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.9);
-}
+    body {
+        background-image: url('../Images/madrid2.jpg');
+        background-size: cover;
+        background-position: center top;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 100px; /* Ajusta este valor según la altura de tu footer */
+    }
 
-.button-group-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
+    header {
+        text-align: center;
+        color: white;
+        padding-top: 70px;
+    }
+    
+    .container {
+        max-width: 80%; /* Cambia el porcentaje según tus preferencias */
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
 
-.button-group {
-    display: flex;
-    align-items: center;
-}
+    .input-container {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+    }
 
-.button-group label {
-    margin-right: 10px;
-    width: 230px;
-    font-weight: bold;
-}
+    .input-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
-.button-group button {
-    width: 100px;
-    margin-right: 10px;
-}
+    .input-group label {
+        margin-top: 9px;
+        margin-bottom: 0;
+        font-weight: bold;
+    }
 
+    select {
+    color: black; /* Cambia el color del texto a azul */
+    }
+    
+    input[type="number"] {
+        -webkit-appearance: none;
+    }
+    
+    input[type="number"],
+    select {
+        width: 80%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-.input-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #0056b3;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+        /* Agregamos una transición para el cambio de color */
+    }
 
-.input-group label {
-    margin-top: 9px;
-    margin-bottom: 0;
-    font-weight: bold;
-}
+    /* Cambio de color al ser presionado */
+    button[type="submit"]:active {
+        background-color: #007bff;
+    }
+    
+    .button-group button[type="button"] {
+        background-color: rgba(48, 47, 47, 0.15);
+        color: black;
+        font-weight: bold;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        width: 50px;
+    }
 
-input[type="number"],
-select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+    /* Cambio de color y texto al ser "sí" */
+    .button-group button[type="button"].active {
+        background-color: #007bff;
+        color: #fff;
+        border: 1px solid transparent;
+    }
 
-button[type="button"] {
-    width: 50%;
-    padding: 8px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button[type="button"]:hover {
-    background-color: #0056b3;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #0056b3;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #004080;
-}
-
-button[type="submit"] {
-    width: 50%;
-    padding: 10px 20px;
-    margin-top: 30px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 16px;
-}
-
-footer {
+    footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -120,27 +285,8 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-}
+    z-index: 1000; /* Asegurar que el footer esté sobre otros elementos */
+    }
 
-/* Estilos para el popup */
-.popup {
-    position: fixed;
-    top: 85%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-}
 
-/* Estilos para el botón de cerrar */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    color: #333333;
-    font-size: 20px;
 }
