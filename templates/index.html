@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Intelligent Real State</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
     <header>
         <h1>Intelligent Real State</h1>
@@ -55,7 +57,8 @@
                 </div>
                 <div class="button-group">
                     <label for="airConditioning">Aire acondicionado:</label>
-                    <button type="button" id="airConditioningButton" onclick="toggleButton('airConditioningButton')">No</button>
+                    <button type="button" id="airConditioningButton"
+                        onclick="toggleButton('airConditioningButton')">No</button>
                     <input type="hidden" id="airConditioning" name="airConditioning" value=0>
                 </div>
             </div>
@@ -75,7 +78,7 @@
 
 
             <div class="input-group">
-                <label for="property_type">Tipo de inmueble:</label>
+                <label for="property_type">Clase del inmueble:</label>
                 <select id="property_type" name="property_type">
                     <option value="De época">De época</option>
                     <option value="Señorial">Señorial</option>
@@ -85,7 +88,7 @@
             </div>
 
             <div class="input-group">
-                <label for="housing_type">Tipo de inmueble:</label>
+                <label for="housing_type">Tipo de propiedad:</label>
                 <select id="housing_type" name="housing_type">
                     <option value="piso">Piso</option>
                     <option value="casa">Casa</option>
@@ -127,7 +130,7 @@
         // Función para leer el archivo CSV
         function leerCSV(url, callback) {
             var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
+            xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     callback(xhr.responseText);
                 }
@@ -139,7 +142,7 @@
         // Función para generar opciones del menú desplegable
         function generarOpciones(distritos) {
             var select = document.getElementById("district");
-            distritos.forEach(function(distrito) {
+            distritos.forEach(function (distrito) {
                 // Convertir la primera letra a mayúscula y el resto a minúscula
                 var distritoCapitalizado = distrito.charAt(0).toUpperCase() + distrito.slice(1).toLowerCase();
                 var option = document.createElement("option");
@@ -165,16 +168,16 @@
         }
 
         // Llama a la función para leer el archivo CSV y generar opciones al cargar la página
-        leerCSV("../static/distritos.csv", function(data) {
+        leerCSV("../static/distritos.csv", function (data) {
             var distritos = data.split("\n");
             generarOpciones(distritos);
         });
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-    // Manejar la solicitud del formulario
-            $("#houseForm").submit(function(event) {
+        $(document).ready(function () {
+            // Manejar la solicitud del formulario
+            $("#houseForm").submit(function (event) {
                 // Prevenir el envío del formulario por defecto
                 event.preventDefault();
 
@@ -186,18 +189,18 @@
                     type: "POST",
                     url: "/predict",
                     data: formData,
-                    success: function(response) {
+                    success: function (response) {
                         // Verificar si hay un error en la respuesta
                         if ("error" in response) {
                             // Mostrar el popup de error personalizado
                             showCustomPopup(response.error.join("\n"));
                         } else {
-                            var roundedPrediction = Math.round(response.prediction/ 1000) * 1000;
+                            var roundedPrediction = Math.round(response.prediction / 1000) * 1000;
                             // Mostrar la predicción redondeada en la página
                             $("#predictionResult").text("El precio predicho es: " + roundedPrediction + "€");
                         }
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error("Error:", error);
                     }
                 });
@@ -214,7 +217,7 @@
 
             // Agregar el botón de cerrar
             var closeBtn = $("<span class='close-btn'>&times;</span>");
-            closeBtn.click(function() {
+            closeBtn.click(function () {
                 // Ocultar el popup al hacer clic en el botón de cerrar
                 popup.remove();
             });
@@ -225,5 +228,35 @@
         }
 
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Función para verificar si el usuario ha llegado al final de la página
+            function isFooterVisible() {
+                const scrollPosition = window.innerHeight + window.scrollY;
+                const documentHeight = document.body.offsetHeight;
+                const triggerPoint = 0.95 * documentHeight; // Cambia 0.8 según tu preferencia (por ejemplo, 0.7 para el 70%)
+                return scrollPosition >= triggerPoint;
+            }
+
+            // Función para mostrar u ocultar el footer según la posición del usuario en la página
+            function toggleFooterVisibility() {
+                if (isFooterVisible()) {
+                    document.querySelector("footer").classList.add("footer-show");
+                } else {
+                    document.querySelector("footer").classList.remove("footer-show");
+                }
+            }
+
+            // Ejecutar la función toggleFooterVisibility() cuando se desplace la página
+            window.addEventListener("scroll", toggleFooterVisibility);
+
+            // Ejecutar la función toggleFooterVisibility() al cargar la página para determinar si el footer debe mostrarse inicialmente
+            toggleFooterVisibility();
+        });
+
+
+    </script>
+
 </body>
+
 </html>
