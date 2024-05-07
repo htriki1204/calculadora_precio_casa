@@ -5,17 +5,13 @@
 
 ## 1- Descripción
 
-Hemos decidido que desplegaremos el modelo como una aplicación web. Esta fue nuestra primera 
-idea al definir nuestro proyecto inicialmente y creemos que es la mejor manera para poder poner 
-nuestra herramienta en manos de usuarios que puedan usarla.
-Para ello hemos optado por desplegar nuestro modelo de predicción de precios de viviendas en Madrid 
-como una aplicación web utilizando Flask, un framework de Python para desarrollo web.
-Después de tener nuestra aplicación en local hemos decidido desplegarla y alojarla en la nube 
-utilizando “pythonanywhere” que proporciona un servicio gratuito suficiente para lanzar una primera 
-versión de la aplicación en la web. En un futuro se buscarían infraestructuras más sofisticadas y con 
-más capacidad para mejorar la calidad del producto pero “pythonanywhere” nos 
-proporcionará el servicio que necesitamos por ahora.
-Y con todo esto hemos desplegado nuestro modelo en el siguiente link: 
+Este proyecto es una aplicación web que despliega el modelo de aprendizaje automatico que hemos creado en la asignatura "Proyecto De Datos". Para esta tarea hemos utilizado Flask, un framework de Python para desarrollo web.
+Tenemos una estructura sencilla de ficheros con un fichero html para el cuerpo de la página web y un archivo css con sus correspondientes estilos. Por otro lado tenemos un archivo py que es la aplicación en si.
+Finalmente tenemos una carpeta pkl donde se guarda nuestro modelo de aprendizaje automatico y otros objetos necesarios para el procesamiento de las predicciones.
+
+En cuanto a la web ha sido desplegada gracias a "pythonanywhere" que permite alojar la web de forma gratuita y sencilla. La web es un prototipo y puede tener algun "bug" o error ya que no tenemos experiencia previa en este
+aspecto. Se puede acceder a la web y probar el modelo de aprendizaje automatico en el siguiente link:
+
 http://alewar.pythonanywhere.com/
 
 ## 2- Integrantes del equipo
